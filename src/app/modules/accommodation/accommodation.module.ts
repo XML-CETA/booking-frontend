@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    CreateAccommodationComponent
+    CreateAccommodationComponent,
   ],
   imports: [
     CommonModule,
