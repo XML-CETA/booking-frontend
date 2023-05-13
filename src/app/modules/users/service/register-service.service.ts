@@ -7,7 +7,7 @@ import { User } from '../model/user';
 })
 export class RegisterServiceService {
 
-  private apiUrl = 'http://localhost:3000/users';
+  private apiUrl = 'http://localhost:8000/users';
 
   private httpOptions = {
 	headers: new HttpHeaders({ 'Content-Type': 'application/json'})
