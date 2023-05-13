@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../model/user';
 import { RegisterServiceService } from '../service/register-service.service';
+import { Address } from '../model/address';
 
 @Component({
   selector: 'app-register',
@@ -12,16 +13,23 @@ import { RegisterServiceService } from '../service/register-service.service';
 export class RegisterComponent {
   public user = <User> {
 		name: '',
-		role: 'Regular',
+		role: '',
 		surname: '',
-		username: '',
+		email: '',
 		password: ''
 	};
 
-	public usernameControl = new FormControl('', Validators.required);
+	public address: Address = {} as Address;
+
+	public emailControl = new FormControl('', Validators.required);
 	public passwordControl = new FormControl('', Validators.required);
 	public nameControl = new FormControl('', Validators.required);
 	public surnameControl = new FormControl('', Validators.required);
+	public roleControl = new FormControl('', Validators.required);
+	public countryControl = new FormControl('', Validators.required);
+	public cityControl = new FormControl('', Validators.required);
+	public streetControl = new FormControl('', Validators.required);
+	public numberControl = new FormControl('', Validators.required);
 
 	public confirmPassword = this.user.password;
 
@@ -35,7 +43,8 @@ export class RegisterComponent {
 			alert('Passwords do not match');
 			return;
 		}
-
+		this.user.address = this.address;
+		
 		this.registerService.register(this.user).subscribe({
 			next: () => {
 				alert('Registered successfully');
@@ -46,10 +55,11 @@ export class RegisterComponent {
 	}
 
 	public validateFields() {
-		return this.usernameControl.valid &&
+		return this.emailControl.valid &&
 			this.passwordControl.valid &&
 			this.nameControl.valid &&
-			this.surnameControl.valid;
+			this.surnameControl.valid &&
+			this.roleControl.valid;
 	}
 
 	private validatePassword() {
