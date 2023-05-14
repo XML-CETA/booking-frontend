@@ -10,6 +10,8 @@ import { RegisterComponent } from './modules/users/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { EditProfileComponent } from './modules/users/edit-profile/edit-profile.component';
+import { ReservationListComponent } from './modules/users/reservation-list/reservation-list.component';
+import { ReservationRequestsComponent } from './modules/users/reservation-requests/reservation-requests.component';
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import { EditProfileComponent } from './modules/users/edit-profile/edit-profile.
     RegisterComponent,
     NavbarComponent,
     EditProfileComponent,
+    ReservationListComponent,
+    ReservationRequestsComponent,
   ],
   imports: [
     BrowserModule,
