@@ -26,15 +26,15 @@ export class LoginComponent {
 
   login(){
     this.authService.login(this.loginDto).subscribe(
-      data => {
-        localStorage.setItem('token', String(data));
+      (data) => {
+        localStorage.setItem('token', (<{token: string}>data).token);
         this.router.navigate(['/']);
       },
       error => {
           this.errorMessage = 'Invalid username or password';
       }
     );
-   
+
   }
 
 }
