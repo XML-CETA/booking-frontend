@@ -26,4 +26,8 @@ export class RegisterServiceService {
   public editUser(user: User){
     return this.http.put(`${this.apiUrl}user`, JSON.stringify({user: user}), this.httpOptions);
   }
+
+  public deleteUser(){
+    return this.http.delete(`${this.apiUrl}user`,this.httpOptions);
+  }
 }

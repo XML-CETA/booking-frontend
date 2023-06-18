@@ -41,4 +41,10 @@ export class EditProfileComponent {
     this.userService.editUser(<User>{...this.user}).subscribe(data => console.log(data))
 	}
 
+	public deleteUser() {
+    this.userService.deleteUser().subscribe(data => console.log(data))
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+	}
+
 }
