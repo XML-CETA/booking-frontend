@@ -7,7 +7,7 @@ import { User } from '../model/user';
 })
 export class RegisterServiceService {
 
-  private apiUrl = 'http://localhost:8000/users';
+  private apiUrl = 'http://localhost:8000/';
 
   private httpOptions = {
 	headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -16,6 +16,6 @@ export class RegisterServiceService {
   constructor(private http: HttpClient) { }
 
   public register(newUser: User){
-    return this.http.post(this.apiUrl, newUser, this.httpOptions);
+    return this.http.post(`${this.apiUrl}register`, JSON.stringify({user: newUser}), this.httpOptions);
   }
 }
