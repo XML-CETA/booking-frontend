@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Accommodation, AccommodationFull, AllAccommodationsResponse, Appointment } from '../model/Accommodation';
-import { SearchAccommodationDto } from '../search-accommodation/dto/SearchAccommodationDto';
+import { SearchAccommodationDto, SearchedAccommodationsResponse} from '../search-accommodation/dto/SearchAccommodationDto';
 import { Observable } from 'rxjs';
 import { CreateAccommodationDto } from '../create-accommodation/dto/CreateAccommodationDto';
 
