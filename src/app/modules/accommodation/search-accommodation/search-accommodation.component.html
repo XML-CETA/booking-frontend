@@ -1,18 +1,31 @@
 <div class="flex mt-[5%] ml-[6%] space-x-3 ">
     <div class="flex justify-center">
         <div class="flex flex-col">
-        <label>Location:</label>
+        <label>Country:</label>
         <div class="mb-3 xl:w-15">
           <div class="relative mb-1 flex w-full flex-wrap items-stretch">
             <input
               type="search"
-            
+              [(ngModel)]="searchParams.country"
               class="relative m-0 block w-[1%] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-neutral-700 outline-none transition duration-300 ease-in-out focus:border-primary-600 focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200"
               aria-label="Search"
               aria-describedby="button-addon2" />
           </div>
         </div>
         </div>
+        <div class="flex flex-col">
+          <label>City:</label>
+          <div class="mb-3 xl:w-15">
+            <div class="relative mb-1 flex w-full flex-wrap items-stretch">
+              <input
+                type="search"
+                [(ngModel)]="searchParams.city"
+                class="relative m-0 block w-[1%] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-neutral-700 outline-none transition duration-300 ease-in-out focus:border-primary-600 focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200"
+                aria-label="Search"
+                aria-describedby="button-addon2" />
+            </div>
+          </div>
+          </div>
       </div>
       <div class="flex justify-center">
         <div class="flex flex-col">
@@ -21,7 +34,7 @@
           <div class="relative mb-1 flex w-full flex-wrap items-stretch">
             <input
               type="number"
-             
+              [(ngModel)]="searchParams.guestsNumber"
               class="relative m-0 block w-[1%] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-neutral-700 outline-none transition duration-300 ease-in-out focus:border-primary-600 focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200"
               aria-label="Search"
               aria-describedby="button-addon2" />
@@ -35,8 +48,8 @@
         <div class=" xl:w-15">
           <div class="relative  flex w-full flex-wrap items-stretch">
             <input
-              type="datetime-local"
-              
+              type="date"
+              [(ngModel)]="interval.dateFrom"
               class="relative m-0 block w-[1%] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-neutral-700 outline-none transition duration-300 ease-in-out focus:border-primary-600 focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200"
               aria-label="Search"
               aria-describedby="button-addon2" />
@@ -50,8 +63,8 @@
         <div class="mb-3 xl:w-15">
           <div class="relative  flex w-full flex-wrap items-stretch">
             <input
-              type="datetime-local"
-              
+              type="date"
+              [(ngModel)]="interval.dateTo"
               class="relative m-0 block w-[1%] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-neutral-700 outline-none transition duration-300 ease-in-out focus:border-primary-600 focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200"
               placeholder="Search"
               aria-label="Search"
@@ -61,7 +74,7 @@
         </div>
       </div>
       <span
-
+        (click)="search()"
         class="input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-neutral-700 dark:text-neutral-200"
         id="basic-addon2">
         <svg
@@ -84,16 +97,46 @@
               
             </div>
           </div>
+          <div *ngIf="!searchFlag">
           <div class="flex flex-wrap -m-4">
             <div *ngFor="let a of accommodations " class="xl:w-1/3 md:w-1/2 p-4">
-              <div class="bg-white p-6 shadow-md rounded-lg">
+              <div class="bg-white p-6 shadow-md rounded-lg flex">
+                <div>
                 <h3 class="text-lg text-gray-900 font-medium title-font mb-4">Name: {{a.name}}</h3>
                 <h3 class="text-lg text-gray-900 font-medium title-font mb-4">Host: {{a.host}}</h3>
                 <h3 class="text-lg text-gray-900 font-medium title-font mb-4">Min guests: {{a.minGuests}}</h3>
                 <h3 class="text-lg text-gray-900 font-medium title-font mb-4">Max guests: {{a.maxGuests}}</h3>
+              </div>
+                <div class="flex flex-col">
+                <h3 class="text-lg text-gray-900 font-medium title-font mb-4">{{a.address.country}}, {{a.address.city}}</h3>
+                <h3 class="text-lg text-gray-900 font-medium title-font mb-4">{{a.address.street}} {{a.address.number}}</h3>
+
+                </div>
                 <p class="leading-relaxed text-base"></p>
               </div>
             </div>
           </div>
         </div>
+        <div *ngIf="searchFlag">
+          <div class="flex flex-wrap -m-4">
+            <div *ngFor="let a of searchedAccommodations " class="xl:w-1/3 md:w-1/2 p-4">
+              <div class="bg-white p-6 shadow-md rounded-lg flex">
+                <div>
+                <h3 class="text-lg text-gray-900 font-medium title-font mb-4">Name: {{a.name}}</h3>
+                <h3 class="text-lg text-gray-900 font-medium title-font mb-4">Host: {{a.host}}</h3>
+                <h3 class="text-lg text-gray-900 font-medium title-font mb-4">Number of guests: {{a.guestsNumber}}</h3>
+                <h3 class="text-lg text-gray-900 font-medium title-font mb-4">Total price: {{a.totalPrice}}</h3>
+                <h3 class="text-lg text-gray-900 font-medium title-font mb-4">Price per night: {{a.unitPrice}}</h3>
+              </div>
+                <div class="flex flex-col">
+                  <h3 class="text-lg text-gray-900 font-medium title-font mb-4">{{a.address.country}}, {{a.address.city}}</h3>
+                  <h3 class="text-lg text-gray-900 font-medium title-font mb-4">{{a.address.street}} {{a.address.number}}</h3>
+  
+                  </div>
+                <p class="leading-relaxed text-base"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
