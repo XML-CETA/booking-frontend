@@ -3,6 +3,7 @@ import { Interval, SearchAccommodationDto, SearchedAccommodation } from './dto/S
 import { Accommodation } from '../model/Accommodation';
 import { AccommodationService } from '../service/accommodation.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../auth/service/auth.service';
 
 @Component({
   selector: 'app-search-accommodation',
@@ -15,20 +16,19 @@ export class SearchAccommodationComponent {
   public accommodations: Accommodation[] = [];
   public searchFlag: boolean = false;
   public searchedAccommodations: SearchedAccommodation[] = [];
+  public userRole: string = ''
 
   constructor(
    private accommodationService:AccommodationService,
-   private router: Router
+   private router: Router,
+   private authService: AuthService
   ) {
   }
 
   search() {
     this.searchParams.interval = this.interval;
-    console.log(this.searchParams)
     this.accommodationService.searchAccommodation(this.searchParams).subscribe(data => {
-      console.log(data)
       this.searchedAccommodations = data.accommodations;
-      console.log(this.searchedAccommodations);
       this.searchFlag = true;
     });
   }
@@ -37,7 +37,7 @@ export class SearchAccommodationComponent {
     this.accommodationService.getAll().subscribe(data => {
       this.accommodations = data.accommodations;
     });
-
+    this.userRole = this.authService.getLoggedInRole();
   }
 
   public newAccommodation() {
@@ -45,6 +45,12 @@ export class SearchAccommodationComponent {
   }
 
   public view(id: string) {
+    if(this.userRole == 'HOST'){
     this.router.navigate(['accommodation', id]);
   }
+  }
+  public createReservation(id: string,name:string) {
+    this.router.navigate(['reservation/create'],{state:{accommodationId:id,name:name}});
+  }
+
 }

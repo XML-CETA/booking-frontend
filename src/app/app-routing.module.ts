@@ -5,12 +5,11 @@ import { LoginComponent } from './modules/auth/login/login.component';
 import { RegisterComponent } from './modules/users/register/register.component';
 import { EditProfileComponent } from './modules/users/edit-profile/edit-profile.component';
 import { SearchAccommodationComponent } from './modules/accommodation/search-accommodation/search-accommodation.component';
-import { CreateReservationComponent } from './modules/accommodation/create-reservation/create-reservation.component';
 import { ReservationListComponent } from './modules/users/reservation-list/reservation-list.component';
-import { ReservationRequestsComponent } from './modules/users/reservation-requests/reservation-requests.component';
 import { NotificationsComponent } from './modules/users/notifications/notifications.component';
 import { ViewAccommodationComponent } from './modules/accommodation/view-accommodation/view-accommodation.component';
 import { RateAccommodationComponent } from './modules/accommodation/rate-accommodation/rate-accommodation.component';
+import { WaitingReservationsComponent } from './modules/users/waiting-reservations/waiting-reservations.component';
 
 const routes: Routes = [
   { path: 'accommodation/create', component: CreateAccommodationComponent },
@@ -20,8 +19,8 @@ const routes: Routes = [
   { path: 'profile', component: EditProfileComponent },
   { path: 'accommodations', component: SearchAccommodationComponent },
   { path: 'reservations', component: ReservationListComponent },
-  { path: 'reservation-requests', component: ReservationRequestsComponent},
   { path: 'notifications', component: NotificationsComponent},
+  { path: 'reservations/waiting', component: WaitingReservationsComponent },
   { path: 'accommodation/:id/rate', component: RateAccommodationComponent}
 ];
 
