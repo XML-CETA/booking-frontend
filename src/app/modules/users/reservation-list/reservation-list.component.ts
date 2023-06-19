@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ReservationService } from '../../accommodation/service/reservation.service';
-import { Reservation } from './model/Reservation';
+import { Reservation, Status } from './model/Reservation';
 import { AuthService } from '../../auth/service/auth.service';
 import jwtDecode from 'jwt-decode';
 
@@ -19,7 +19,13 @@ export class ReservationListComponent {
       this.user = (<any>jwtDecode(this.token)).custom_claims.email;
       this.reservationService.getAll().subscribe(data => {
         this.reservations = data.reservations;
-        this.reservations = this.reservations.filter(reservation => reservation.user == this.user);
+        this.reservations = this.reservations.filter(reservation => reservation.user == this.user && reservation.status == Status.Reserved );
+      });
+    }
+
+    cancelReservation(id: string){
+      this.reservationService.cancel(id).subscribe(data => {
+        console.log(data);
       });
     }
 }

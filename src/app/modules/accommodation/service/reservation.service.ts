@@ -18,7 +18,12 @@ export class ReservationService {
   create(createDto: ReservationCreateDto) {
     return this.http.post('http://localhost:8000/reservations', createDto, httpOptions);
   }
+
   getAll():Observable<UserAcceptedReservations> {
     return this.http.get<UserAcceptedReservations>('http://localhost:8000/reservations');
+  }
+
+  cancel(id: string) {
+    return this.http.delete(`http://localhost:8000/reservations/${id}`);
   }
 }
