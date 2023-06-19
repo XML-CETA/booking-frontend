@@ -11,27 +11,27 @@
             <div class="my-8 text-sm">
                 <div class="flex flex-col my-4">
                     <label for="name" class="text-gray-700">Accommodation</label>
-                    <input type="text" class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900">
+                    <input disabled [(ngModel)]="accommodationName" type="text" class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900">
                 </div>
 
                 <div class="flex flex-col my-4">
                     <label for="email" class="text-gray-700">Arrival date</label>
-                    <input type="datetime-local" class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900">
+                    <input [(ngModel)]="createDto.dateFrom" type="date" class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900">
                     
                 </div>
 
                 <div class="flex flex-col my-4">
                     <label for="name" class="text-gray-700">Check out date</label>
-                    <input type="datetime-local" class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900" >
+                    <input [(ngModel)]="createDto.dateTo" type="date" class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900" >
                 </div>
 
                 <div class="flex flex-col my-4">
                     <label for="name" class="text-gray-700">Number of guests</label>
-                    <input type="number" class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900">
+                    <input [(ngModel)]="createDto.guests" type="number" class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900">
                 </div>
 
                 <div class="my-4 flex items-center justify-end space-x-4">
-                    <button class="bg-blue-600 hover:bg-blue-700 rounded-lg px-8 py-2 text-gray-100 hover:shadow-xl transition duration-150 uppercase">Create</button>
+                    <button (click)="create()" class="bg-blue-600 hover:bg-blue-700 rounded-lg px-8 py-2 text-gray-100 hover:shadow-xl transition duration-150 uppercase">Create</button>
                 </div>
             </div>
             
