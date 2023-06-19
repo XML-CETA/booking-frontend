@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'accommodations', component: SearchAccommodationComponent },
   { path: 'reservations', component: ReservationListComponent },
   { path: 'notifications', component: NotificationsComponent},
-  { path: 'reservations/waiting', component: WaitingReservationsComponent },,
+  { path: 'reservations/waiting', component: WaitingReservationsComponent },
   { path: 'accommodation/:id/rate', component: RateAccommodationComponent}
 ];
 
