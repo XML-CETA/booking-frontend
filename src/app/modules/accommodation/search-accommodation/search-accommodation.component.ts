@@ -10,16 +10,19 @@ import { AccommodationService } from '../service/accommodation.service';
 })
 export class SearchAccommodationComponent {
   public SearchAccommodationDto: SearchAccommodationDto = {} as SearchAccommodationDto;
-  public accommodations: Accommodation[] = [];
+  public accommodations: Accommodation[] = []
 
-  constructor(private accommodationService:AccommodationService) { }
+  constructor(private accommodationService:AccommodationService) { 
+  }
 
   search() {
     
   }
 
-  ngOnInit() {
-    this.accommodationService.getAll().subscribe(accommodations => this.accommodations = accommodations);
+  ngOnInit() : void {
+    this.accommodationService.getAll().subscribe(data => {
+      this.accommodations = data.accommodations;
+    });
+  
   }
-
 }

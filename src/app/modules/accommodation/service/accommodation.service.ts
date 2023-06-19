@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Accommodation } from '../model/Accommodation';
+import { Accommodation, AllAccommodationsResponse } from '../model/Accommodation';
 import { SearchAccommodationDto } from '../search-accommodation/dto/SearchAccommodationDto';
 import { Observable } from 'rxjs';
 
@@ -19,8 +19,8 @@ export class AccommodationService {
     return this.http.post<Accommodation[]>('http://localhost:8000/accommodations/search', searchAccommodationDto, httpOptions);
   }
 
-  getAll(): Observable<Accommodation[]> {
-    return this.http.get<Accommodation[]>('http://localhost:8000/accommodations');
+  getAll(): Observable<AllAccommodationsResponse> {
+    return this.http.get<AllAccommodationsResponse>('http://localhost:8000/accommodations');
   }
 
 }
