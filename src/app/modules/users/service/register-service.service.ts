@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NotificationResponse, NotificationSettings } from '../model/notifications';
 import { User, UserData } from '../model/user';
 
 @Injectable({
@@ -29,5 +30,13 @@ export class RegisterServiceService {
 
   public deleteUser(){
     return this.http.delete(`${this.apiUrl}user`,this.httpOptions);
+  }
+
+  public getNotifications() {
+    return this.http.get<NotificationResponse>(`${this.apiUrl}notifications`,this.httpOptions);
+  }
+
+  public updateNotificationSettings(settings: NotificationSettings){
+    return this.http.put(`${this.apiUrl}notifications`, JSON.stringify(settings), this.httpOptions);
   }
 }

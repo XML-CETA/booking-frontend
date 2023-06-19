@@ -47,4 +47,7 @@ export class EditProfileComponent {
     this.router.navigate(['/login']);
 	}
 
+	public notifications() {
+    this.router.navigate(['notifications']);
+	}
 }
