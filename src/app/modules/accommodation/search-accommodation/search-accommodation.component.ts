@@ -43,4 +43,8 @@ export class SearchAccommodationComponent {
   public newAccommodation() {
     this.router.navigate(['accommodation/create']);
   }
+
+  public view(id: string) {
+    this.router.navigate(['accommodation', id]);
+  }
 }

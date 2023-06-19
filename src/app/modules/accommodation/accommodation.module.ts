@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchAccommodationComponent } from './search-accommodation/search-accommodation.component';
 import { CreateReservationComponent } from './create-reservation/create-reservation.component';
 import { Router, RouterModule, Routes } from '@angular/router';
+import { ViewAccommodationComponent } from './view-accommodation/view-accommodation.component';
 
 const routes: Routes = [
   { path: 'reservation/create', component: CreateReservationComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
     CreateAccommodationComponent,
     SearchAccommodationComponent,
     CreateReservationComponent,
+    ViewAccommodationComponent,
   ],
   imports: [
     CommonModule,
