@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ReservationService } from '../service/reservation.service';
+import { ReservationService } from '../../users/service/reservation.service';
 import { ReservationCreateDto } from './dto/ReservationCreateDto';
 
 @Component({
@@ -22,7 +22,6 @@ export class CreateReservationComponent {
 
   create() {
     this.createDto.accommodation = this.accommodationId;
-    console.log(this.createDto)
     this.reservationService.create(this.createDto).subscribe(data => {
       console.log(data);
     });

@@ -11,8 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { EditProfileComponent } from './modules/users/edit-profile/edit-profile.component';
 import { ReservationListComponent } from './modules/users/reservation-list/reservation-list.component';
-import { ReservationRequestsComponent } from './modules/users/reservation-requests/reservation-requests.component';
 import { NotificationsComponent } from './modules/users/notifications/notifications.component';
+import { WaitingReservationsComponent } from './modules/users/waiting-reservations/waiting-reservations.component';
 
 
 @NgModule({
@@ -22,8 +22,8 @@ import { NotificationsComponent } from './modules/users/notifications/notificati
     NavbarComponent,
     EditProfileComponent,
     ReservationListComponent,
-    ReservationRequestsComponent,
     NotificationsComponent,
+    WaitingReservationsComponent,
   ],
   imports: [
     BrowserModule,

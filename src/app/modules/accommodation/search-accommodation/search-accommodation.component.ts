@@ -29,8 +29,6 @@ export class SearchAccommodationComponent {
     this.searchParams.interval = this.interval;
     this.accommodationService.searchAccommodation(this.searchParams).subscribe(data => {
       this.searchedAccommodations = data.accommodations;
-      console.log(this.searchedAccommodations);
-      console.log(this.searchedAccommodations.length)
       this.searchFlag = true;
     });
   }
@@ -47,7 +45,7 @@ export class SearchAccommodationComponent {
   }
 
   public view(id: string) {
-    if(this.userRole == 'Host'){
+    if(this.userRole == 'HOST'){
     this.router.navigate(['accommodation', id]);
   }
   }

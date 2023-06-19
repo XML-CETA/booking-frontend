@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ReservationCreateDto } from '../create-reservation/dto/ReservationCreateDto';
+import { ReservationCreateDto } from '../../accommodation/create-reservation/dto/ReservationCreateDto';
 import { Observable } from 'rxjs';
-import { Reservation, UserAcceptedReservations } from '../../users/reservation-list/model/Reservation';
+import { HostWaitingReservationsResponse, Reservation, UserAcceptedReservations } from '../reservation-list/model/Reservation';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -25,5 +25,17 @@ export class ReservationService {
 
   cancel(id: string) {
     return this.http.delete(`http://localhost:8000/reservations/${id}`);
+  }
+
+  getWaitingReservations():Observable<HostWaitingReservationsResponse> {
+    return this.http.get<HostWaitingReservationsResponse>('http://localhost:8000/reservations/waiting');
+  }
+
+  decline(id: string) {
+    return this.http.delete(`http://localhost:8000/reservations/waiting/${id}`);
+  }
+
+  confirm(id: string) {
+    return this.http.put(`http://localhost:8000/reservations/confirm/${id}`, {});
   }
 }

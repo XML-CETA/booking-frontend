@@ -19,3 +19,17 @@ export enum Status{
     Expired,
     Canceled
 }
+
+export interface WaitingReservation {
+    id: string;
+    accommodation: string;
+    dateFrom: string;
+    dateTo: string;
+    guests: number;
+    user: string;
+    userCanceledReservations: number
+}
+
+export interface HostWaitingReservationsResponse{
+    reservations: WaitingReservation[];
+}

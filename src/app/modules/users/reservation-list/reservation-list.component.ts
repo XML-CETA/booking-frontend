@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ReservationService } from '../../accommodation/service/reservation.service';
+import { ReservationService } from '../service/reservation.service';
 import { Reservation, Status } from './model/Reservation';
 import { AuthService } from '../../auth/service/auth.service';
 import jwtDecode from 'jwt-decode';
@@ -27,5 +27,14 @@ export class ReservationListComponent {
       this.reservationService.cancel(id).subscribe(data => {
         console.log(data);
       });
+    }
+
+    checkDate(dateFrom:string){
+      const currentDate = new Date();
+      const reservationEndDate = new Date(dateFrom);
+      const timeDifference = reservationEndDate.getTime() - currentDate.getTime();
+      const oneDayMilliseconds = 24 * 60 * 60 * 1000;
+      const daysRemaining = Math.floor(timeDifference / oneDayMilliseconds);
+      return daysRemaining >= 1;
     }
 }
