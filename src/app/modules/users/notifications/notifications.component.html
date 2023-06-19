@@ -1,0 +1,53 @@
+<div class="flex flex-col space-y-4 left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none ">
+		<button  class="flex-no-shrink bg-blue-500 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-blue-500 text-white rounded-full" (click)="return()">Return</button>
+
+<label *ngIf="notifications.role === 'HOST'" class="relative inline-flex items-center cursor-pointer">
+  <input type="checkbox" value="" class="sr-only peer" (change)="updateSettings()"  [(ngModel)]="notificationSettings.reservationRequest">
+  <div  class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+  <span class="ml-3 text-sm font-medium text-black-900 dark:text-black-500">Reservation Requests</span>
+</label>
+
+<label *ngIf="notifications.role === 'HOST'" class="relative inline-flex items-center cursor-pointer">
+  <input type="checkbox" value="" class="sr-only peer" (change)="updateSettings()" [(ngModel)]="notificationSettings.reservationCancel">
+  <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+  <span class="ml-3 text-sm font-medium text-black-900 dark:text-black-500">Reservation Cancel</span>
+</label>
+<label *ngIf="notifications.role === 'HOST'"  class="relative inline-flex items-center cursor-pointer">
+  <input type="checkbox" value="" class="sr-only peer" (change)="updateSettings()" [(ngModel)]="notificationSettings.personalRating">
+  <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+  <span class="ml-3 text-sm font-medium text-black-900 dark:text-black-500">Personal Ratings</span>
+</label>
+<label *ngIf="notifications.role === 'HOST'" class="relative inline-flex items-center cursor-pointer">
+  <input type="checkbox" value="" class="sr-only peer" (change)="updateSettings()" [(ngModel)]="notificationSettings.accommodationRating">
+  <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+  <span class="ml-3 text-sm font-medium text-black-900 dark:text-black-500">Accommodation Ratings</span>
+</label>
+<label *ngIf="notifications.role === 'HOST'" class="relative inline-flex items-center cursor-pointer">
+  <input type="checkbox" value="" class="sr-only peer" (change)="updateSettings()" [(ngModel)]="notificationSettings.prominentStatusChange">
+  <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+  <span class="ml-3 text-sm font-medium text-black-900 dark:text-black-500">Prominent Status Change</span>
+</label>
+<label *ngIf="notifications.role === 'REGULAR'"  class="relative inline-flex items-center cursor-pointer">
+  <input (change)="updateSettings()" [(ngModel)]="notificationSettings.reservationResponse" type="checkbox" value="" class="sr-only peer" >
+  <div  class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+  <span class="ml-3 text-sm font-medium text-black-900 dark:text-black-500">Reservation Response</span>
+</label>
+
+<div *ngFor="let notification of notifications.notifications" class="flex flex-col p-8 bg-white shadow-md hover:shodow-lg rounded-2xl">
+	<div class="flex items-center justify-between">
+		<div class="flex items-center">
+			<svg xmlns="http://www.w3.org/2000/svg"
+				class="w-16 h-16 rounded-2xl p-3 border border-blue-100 text-blue-400 bg-blue-50" fill="none"
+				viewBox="0 0 24 24" stroke="currentColor">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+					d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+			</svg>
+			<div class="flex flex-col ml-3">
+        <div class="font-medium leading-none">{{notification.subject}}</div>
+        <p class="text-sm text-gray-600 leading-none mt-1">{{notification.content}}</p>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
