@@ -46,6 +46,10 @@
                             <label for="name" class="text-gray-700">Enter photographies of accommodation</label>
                             <input type="file" multiple="multiple" class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900">
                         </div>
+                        <div class="flex items-center mb-4">
+    <input id="default-checkbox" [(ngModel)]="manual" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+    <label for="default-checkbox" class="ml-2 text-sm font-medium text-black-ray-900 dark:text-black-300">Manual reservation confirmation</label>
+</div>
 
                         <div class="my-4 flex items-center justify-end space-x-4">
                             <button (click)="create()" class="bg-blue-600 hover:bg-blue-700 rounded-lg px-8 py-2 text-gray-100 hover:shadow-xl transition duration-150 uppercase">Create</button>

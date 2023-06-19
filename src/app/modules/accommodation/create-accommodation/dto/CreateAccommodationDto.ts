@@ -7,4 +7,5 @@ export interface CreateAccommodationDto {
     address: Address
     minGuests: number;
     maxGuests: number;
+    confirmationType: 'Manual' | 'Automatic';
 }

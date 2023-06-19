@@ -13,6 +13,7 @@ export class CreateAccommodationComponent {
 
   public createAccommodation = <CreateAccommodationDto>{}
   public address = <Address>{}
+  public manual = false
   constructor(
     private accService: AccommodationService,
     private router: Router
@@ -21,6 +22,8 @@ export class CreateAccommodationComponent {
 
   create() {
     this.createAccommodation.address = this.address;
+    alert(this.manual)
+    this.createAccommodation.confirmationType = this.manual ? 'Manual' : 'Automatic';
     this.accService.create(this.createAccommodation).subscribe({
 			next: () => {
 				alert('Created successfully');
