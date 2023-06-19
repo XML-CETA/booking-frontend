@@ -25,3 +25,17 @@ export interface AccommodationFull extends Accommodation {
   freeAppointments: Appointment[]
 }
 
+export interface RateAccommodation{
+  accommodation: string;
+  rate: number;
+}
+
+export interface ShowRateAccommodation{
+  user: string;
+  date: string;
+  rate: number;
+}
+
+export interface AllRatesResponse{
+  rates: ShowRateAccommodation[];
+}
