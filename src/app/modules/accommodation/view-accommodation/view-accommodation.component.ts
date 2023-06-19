@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Accommodation, AccommodationFull, Appointment } from '../model/Accommodation';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Accommodation, AccommodationFull, Appointment, ShowRateAccommodation } from '../model/Accommodation';
 import { AccommodationService } from '../service/accommodation.service';
+import { AuthService } from '../../auth/service/auth.service';
 
 @Component({
   selector: 'app-view-accommodation',
@@ -11,10 +12,14 @@ import { AccommodationService } from '../service/accommodation.service';
 export class ViewAccommodationComponent {
   public accommodation = <AccommodationFull>{}
   public newAppointment = <Appointment>{}
+  public rates: ShowRateAccommodation[] = [];
+  public avgRate: number = 0;
 
   constructor(
     private accService: AccommodationService,
     private route: ActivatedRoute,
+    private router:Router,
+    private auth: AuthService
   ){}
 
   ngOnInit(){
@@ -30,7 +35,17 @@ export class ViewAccommodationComponent {
           price: 0.0
         }
       })
+      this.accService.getRatings(params.get('id') ?? '').subscribe(data=>{
+        this.rates=data.rates
+      })
+      this.accService.getAverageRating(params.get('id') ?? '').subscribe(data=>{
+        this.avgRate=data.average
+      })
     })
+  }
+
+  rateAccommodation(){
+    this.router.navigate(['/accommodation/'+this.accommodation.id+'/rate']);
   }
 
   createAppointment() {
@@ -56,5 +71,8 @@ export class ViewAccommodationComponent {
     });
   }
 
+  public isHost(): boolean {
+	  return this.auth.getLoggedInRole() === 'Host';
+  }
 
 }

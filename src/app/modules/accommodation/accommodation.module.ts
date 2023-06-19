@@ -6,6 +6,7 @@ import { SearchAccommodationComponent } from './search-accommodation/search-acco
 import { CreateReservationComponent } from './create-reservation/create-reservation.component';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { ViewAccommodationComponent } from './view-accommodation/view-accommodation.component';
+import { RateAccommodationComponent } from './rate-accommodation/rate-accommodation.component';
 
 const routes: Routes = [
   { path: 'reservation/create', component: CreateReservationComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
     SearchAccommodationComponent,
     CreateReservationComponent,
     ViewAccommodationComponent,
+    RateAccommodationComponent,
   ],
   imports: [
     CommonModule,
