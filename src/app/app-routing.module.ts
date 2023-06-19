@@ -9,9 +9,11 @@ import { CreateReservationComponent } from './modules/accommodation/create-reser
 import { ReservationListComponent } from './modules/users/reservation-list/reservation-list.component';
 import { ReservationRequestsComponent } from './modules/users/reservation-requests/reservation-requests.component';
 import { NotificationsComponent } from './modules/users/notifications/notifications.component';
+import { ViewAccommodationComponent } from './modules/accommodation/view-accommodation/view-accommodation.component';
 
 const routes: Routes = [
   { path: 'accommodation/create', component: CreateAccommodationComponent },
+  { path: 'accommodation/:id', component: ViewAccommodationComponent },
   { path: 'login',component: LoginComponent },
   { path: 'register',component:RegisterComponent },
   { path: 'profile', component: EditProfileComponent },

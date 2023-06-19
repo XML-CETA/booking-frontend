@@ -14,3 +14,14 @@ export interface Accommodation {
 export interface AllAccommodationsResponse {
     accommodations: Accommodation[];
 }
+
+export interface Appointment {
+  accommodationId: string;
+  interval: {dateFrom: string; dateTo:string};
+  price: number;
+}
+
+export interface AccommodationFull extends Accommodation {
+  freeAppointments: Appointment[]
+}
+
