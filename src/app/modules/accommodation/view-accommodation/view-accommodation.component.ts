@@ -18,11 +18,11 @@ export class ViewAccommodationComponent {
   constructor(
     private accService: AccommodationService,
     private route: ActivatedRoute,
-    private router:Router,
+    private router: Router,
     private auth: AuthService
-  ){}
+  ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.accService.getById(params.get('id') ?? '').subscribe(data => {
         this.accommodation = data
@@ -35,17 +35,17 @@ export class ViewAccommodationComponent {
           price: 0.0
         }
       })
-      this.accService.getRatings(params.get('id') ?? '').subscribe(data=>{
-        this.rates=data.rates
+      this.accService.getRatings(params.get('id') ?? '').subscribe(data => {
+        this.rates = data.rates
       })
-      this.accService.getAverageRating(params.get('id') ?? '').subscribe(data=>{
-        this.avgRate=data.average
+      this.accService.getAverageRating(params.get('id') ?? '').subscribe(data => {
+        this.avgRate = data.average
       })
     })
   }
 
-  rateAccommodation(){
-    this.router.navigate(['/accommodation/'+this.accommodation.id+'/rate']);
+  rateAccommodation() {
+    this.router.navigate(['/accommodation/' + this.accommodation.id + '/rate']);
   }
 
   createAppointment() {
@@ -56,7 +56,7 @@ export class ViewAccommodationComponent {
       this.newAppointment.interval.dateFrom = dateFrom.toISOString().split('T')[0];
       this.newAppointment.interval.dateTo = dateTo.toISOString().split('T')[0];
 
-    } catch(err) {
+    } catch (err) {
       alert('Date error');
       return;
     }
@@ -72,7 +72,7 @@ export class ViewAccommodationComponent {
   }
 
   public isHost(): boolean {
-	  return this.auth.getLoggedInRole() === 'Host';
+    return this.auth.getLoggedInRole() === 'HOST';
   }
 
 }
