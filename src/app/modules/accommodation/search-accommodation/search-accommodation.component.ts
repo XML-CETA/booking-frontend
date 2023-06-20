@@ -55,9 +55,7 @@ export class SearchAccommodationComponent {
   }
 
   public view(id: string) {
-    if (this.userRole == 'HOST') {
-      this.router.navigate(['accommodation', id]);
-    }
+    this.router.navigate(['accommodation', id]);
   }
   public createReservation(id: string, name: string) {
     this.router.navigate(['reservation/create'], { state: { accommodationId: id, name: name } });

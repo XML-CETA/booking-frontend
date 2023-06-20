@@ -8,4 +8,5 @@ export interface CreateAccommodationDto {
     minGuests: number;
     maxGuests: number;
     confirmationType: 'Manual' | 'Automatic';
+    conveniences: string;
 }

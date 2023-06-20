@@ -72,7 +72,7 @@ export class ViewAccommodationComponent {
   }
 
   public isHost(): boolean {
-    return this.auth.getLoggedInRole() === 'Host';
+    return this.auth.getLoggedInRole() === 'HOST';
   }
 
 }
