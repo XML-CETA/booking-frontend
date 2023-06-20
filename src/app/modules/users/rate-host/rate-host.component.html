@@ -1,0 +1,18 @@
+<div class="w-full py-8">
+    <div class="flex items-center justify-center space-x-2">
+    </div>
+    <div class="bg-white w-5/6 md:w-3/4 lg:w-2/3 xl:w-[500px] 2xl:w-[550px] mt-8 mx-auto px-16 py-8 rounded-lg shadow-2xl">
+
+      <h2 class="text-center text-2xl font-bold tracking-wide text-gray-800">Rate {{hostUsername}}</h2>
+        <div class="my-8 text-sm">
+            <div class="flex flex-col my-4">
+                <label for="name" class="text-gray-700">Rating</label>
+                <input type="number" [(ngModel)]="newRate.rate" class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900">
+            </div>
+            <button (click)="rateHost()" class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-blue-600 hover:bg-blue-700 text-sm text-white font-bold  rounded-xl transition duration-200">Rate</button>
+            <button (click)="updateRateHost()" class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-blue-600 hover:bg-blue-700 text-sm text-white font-bold  rounded-xl transition duration-200">Update Rate</button>
+            <button (click)="deleteRateHost()" class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-blue-600 hover:bg-blue-700 text-sm text-white font-bold  rounded-xl transition duration-200">Delete Rate</button>
+        
+        </div>
+    </div>
+</div>

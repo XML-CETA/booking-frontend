@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NotificationResponse, NotificationSettings } from '../model/notifications';
 import { User, UserData } from '../model/user';
+import { UserRate } from '../reservation-list/model/Reservation';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,17 @@ export class RegisterServiceService {
 
   public updateNotificationSettings(settings: NotificationSettings){
     return this.http.put(`${this.apiUrl}notifications`, JSON.stringify(settings), this.httpOptions);
+  }
+
+  public rateUser(rate: UserRate){
+    return this.http.post(`${this.apiUrl}ratings/user`, rate , this.httpOptions);
+  }
+
+  public updateRateUser(rate: UserRate){
+    return this.http.put(`${this.apiUrl}ratings/user`, rate , this.httpOptions);
+  }
+
+  public deleteRateUser(hostId: string){
+    return this.http.delete(`${this.apiUrl}ratings/user`+ hostId,  this.httpOptions);
   }
 }

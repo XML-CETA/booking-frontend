@@ -68,7 +68,5 @@ export class RateAccommodationComponent {
       }
     })
   }
-
-
-
+  
 }

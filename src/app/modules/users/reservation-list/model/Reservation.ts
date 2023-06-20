@@ -33,3 +33,8 @@ export interface WaitingReservation {
 export interface HostWaitingReservationsResponse{
     reservations: WaitingReservation[];
 }
+
+export interface UserRate{
+    ratedUser:string;
+    rate: number;
+}

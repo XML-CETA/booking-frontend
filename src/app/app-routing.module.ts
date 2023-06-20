@@ -10,6 +10,7 @@ import { NotificationsComponent } from './modules/users/notifications/notificati
 import { ViewAccommodationComponent } from './modules/accommodation/view-accommodation/view-accommodation.component';
 import { RateAccommodationComponent } from './modules/accommodation/rate-accommodation/rate-accommodation.component';
 import { WaitingReservationsComponent } from './modules/users/waiting-reservations/waiting-reservations.component';
+import { RateHostComponent } from './modules/users/rate-host/rate-host.component';
 
 const routes: Routes = [
   { path: 'accommodation/create', component: CreateAccommodationComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'reservations', component: ReservationListComponent },
   { path: 'notifications', component: NotificationsComponent},
   { path: 'reservations/waiting', component: WaitingReservationsComponent },
-  { path: 'accommodation/:id/rate', component: RateAccommodationComponent}
+  { path: 'accommodation/:id/rate', component: RateAccommodationComponent},
+  { path: 'host/:username/rate', component: RateHostComponent}
 ];
 
 @NgModule({
