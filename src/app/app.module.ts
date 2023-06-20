@@ -13,6 +13,7 @@ import { EditProfileComponent } from './modules/users/edit-profile/edit-profile.
 import { ReservationListComponent } from './modules/users/reservation-list/reservation-list.component';
 import { NotificationsComponent } from './modules/users/notifications/notifications.component';
 import { WaitingReservationsComponent } from './modules/users/waiting-reservations/waiting-reservations.component';
+import { RateHostComponent } from './modules/users/rate-host/rate-host.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { WaitingReservationsComponent } from './modules/users/waiting-reservatio
     ReservationListComponent,
     NotificationsComponent,
     WaitingReservationsComponent,
+    RateHostComponent,
   ],
   imports: [
     BrowserModule,
