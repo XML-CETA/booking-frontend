@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Accommodation, AccommodationFull, AllAccommodationsResponse, AllRatesResponse, Appointment, RateAccommodation, ShowRateAccommodation } from '../model/Accommodation';
-import { SearchAccommodationDto, SearchedAccommodationsResponse} from '../search-accommodation/dto/SearchAccommodationDto';
+import { FilterAccomodationResponse, SearchAccommodationDto, SearchedAccommodationsResponse } from '../search-accommodation/dto/SearchAccommodationDto';
 import { Observable } from 'rxjs';
 import { CreateAccommodationDto } from '../create-accommodation/dto/CreateAccommodationDto';
+import { FilterParamsDTO } from '../search-accommodation/dto/FilterParamsDto';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,29 +16,29 @@ const httpOptions = {
 export class AccommodationService {
 
   private httpOptions = {
-	headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getRatings(accommodationId: string):Observable<AllRatesResponse>{
-    return this.http.get<AllRatesResponse>('http://localhost:8000/ratings/accommodation/'+accommodationId, httpOptions);
+  getRatings(accommodationId: string): Observable<AllRatesResponse> {
+    return this.http.get<AllRatesResponse>('http://localhost:8000/ratings/accommodation/' + accommodationId, httpOptions);
   }
 
-  getAverageRating(accommodationId: string){
-    return this.http.get<any>('http://localhost:8000/ratings/accommodation/'+accommodationId+'/average', httpOptions);
+  getAverageRating(accommodationId: string) {
+    return this.http.get<any>('http://localhost:8000/ratings/accommodation/' + accommodationId + '/average', httpOptions);
   }
 
-  rateAccommodation(rateAccommodationDto: RateAccommodation){
+  rateAccommodation(rateAccommodationDto: RateAccommodation) {
     return this.http.post('http://localhost:8000/ratings/accommodation', rateAccommodationDto, httpOptions);
   }
-  
-  updateRateAccommodation(rateAccommodationDto: RateAccommodation){
+
+  updateRateAccommodation(rateAccommodationDto: RateAccommodation) {
     return this.http.put('http://localhost:8000/ratings/accommodation', rateAccommodationDto, httpOptions);
   }
 
-  deleteRateAccommodation(accommodationId: string){
-    return this.http.delete('http://localhost:8000/ratings/accommodation/'+accommodationId, httpOptions);
+  deleteRateAccommodation(accommodationId: string) {
+    return this.http.delete('http://localhost:8000/ratings/accommodation/' + accommodationId, httpOptions);
   }
 
   searchAccommodation(searchAccommodationDto: SearchAccommodationDto): Observable<SearchedAccommodationsResponse> {
@@ -58,5 +59,9 @@ export class AccommodationService {
 
   newAppointment(appointment: Appointment) {
     return this.http.post('http://localhost:8000/accommodations/appointment', JSON.stringify(appointment), this.httpOptions);
+  }
+
+  filterAccomodations(filterParamsDTO: FilterParamsDTO): Observable<FilterAccomodationResponse> {
+    return this.http.post<FilterAccomodationResponse>('http://localhost:8000/accommodations/filter', filterParamsDTO, httpOptions);
   }
 }

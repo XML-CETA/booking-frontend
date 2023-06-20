@@ -20,8 +20,13 @@ export interface SearchedAccommodation {
     host: string;
     totalPrice: number;
     unitPrice: number;
+    convenience: string;
 }
 
 export interface SearchedAccommodationsResponse {
+    accommodations: SearchedAccommodation[];
+}
+
+export interface FilterAccomodationResponse {
     accommodations: SearchedAccommodation[];
 }

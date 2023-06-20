@@ -4,6 +4,7 @@ import { Accommodation } from '../model/Accommodation';
 import { AccommodationService } from '../service/accommodation.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/service/auth.service';
+import { FilterParamsDTO } from './dto/FilterParamsDto';
 
 @Component({
   selector: 'app-search-accommodation',
@@ -12,6 +13,7 @@ import { AuthService } from '../../auth/service/auth.service';
 })
 export class SearchAccommodationComponent {
   public searchParams: SearchAccommodationDto = {} as SearchAccommodationDto;
+  public filterParams: FilterParamsDTO = {} as FilterParamsDTO;
   public interval: Interval = {} as Interval;
   public accommodations: Accommodation[] = [];
   public searchFlag: boolean = false;
@@ -19,9 +21,9 @@ export class SearchAccommodationComponent {
   public userRole: string = ''
 
   constructor(
-   private accommodationService:AccommodationService,
-   private router: Router,
-   private authService: AuthService
+    private accommodationService: AccommodationService,
+    private router: Router,
+    private authService: AuthService
   ) {
   }
 
@@ -33,7 +35,15 @@ export class SearchAccommodationComponent {
     });
   }
 
-  ngOnInit() : void {
+  filter() {
+    this.filterParams.accommodations = this.searchedAccommodations
+    this.accommodationService.filterAccomodations(this.filterParams).subscribe(data => {
+      this.searchedAccommodations = data.accommodations;
+      this.searchFlag = true;
+    });
+  }
+
+  ngOnInit(): void {
     this.accommodationService.getAll().subscribe(data => {
       this.accommodations = data.accommodations;
     });
@@ -45,12 +55,12 @@ export class SearchAccommodationComponent {
   }
 
   public view(id: string) {
-    if(this.userRole == 'HOST'){
-    this.router.navigate(['accommodation', id]);
+    if (this.userRole == 'HOST') {
+      this.router.navigate(['accommodation', id]);
+    }
   }
-  }
-  public createReservation(id: string,name:string) {
-    this.router.navigate(['reservation/create'],{state:{accommodationId:id,name:name}});
+  public createReservation(id: string, name: string) {
+    this.router.navigate(['reservation/create'], { state: { accommodationId: id, name: name } });
   }
 
 }
